@@ -8,9 +8,9 @@ import Card from '../Card/Card.js'
  
  
 function Main(props) { 
-const [userName, setUserName] = useState(true)
-const [userDescription, setuserDescription] = useState(true)
-const [userAvatar, setUserAvatar] = useState(true)
+const [userName, setUserName] = useState('')
+const [userDescription, setuserDescription] = useState('')
+const [userAvatar, setUserAvatar] = useState('')
 
 React.useEffect(()=>{
     api.getUserInfo().then((user) => {
@@ -32,7 +32,7 @@ React.useEffect(()=>{
             <div className="profile"> 
  
                 <img className="profile__avatar-edit" src={avatarEdit} onClick={props.onEditAvatar} /> 
-                <img alt="Аватарка профиля" className="profile__avatar" style={{ backgroundImage: `url(${userAvatar})` }}  /> 
+                <img alt="Аватарка профиля" className="profile__avatar" src={userAvatar}  /> 
                 <div className="profile__info"> 
                     <div className="profile__container"> 
                         <h1 className="profile__name">{userName}</h1> 
