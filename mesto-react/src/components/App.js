@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './header/Header';
 import Main from './main/Main';
 import Footer from './footer/Footer';
@@ -13,7 +13,7 @@ function App() {
     const [isAddPlacePopupOpen, setisAddPlacePopupOpen] = useState(false);
     const [isEditAvatarPopupOpen, setisEditAvatarPopupOpen] = useState(false);
     const [isImagePopupOpen, setisImagePopupOpen] = useState(false);
-    const [selectedCard, setselectedCard] = useState([]);
+    const [selectedCard, setselectedCard] = useState([null]);
 
     function ESCClose(evt) {
         if (evt.key === 'Escape') {
@@ -87,10 +87,10 @@ React.useEffect(() =>{
        </PopupWithForm>
 
               <PopupWithForm name="edit" isOpen={isEditProfilePopupOpen} onClose={closeAllPopups}   namePopup="Редактировать профиль" btn="edit" nameBtn="Сохранить"> 
-                    <lable>
+                    <label>
                     <input id="profile-name-input" type="text" placeholder="Имя" className="input input_type_name" name="NameInput" required minLength="2" maxLength="40" />
                     <span className="popup__error profile-name-input-error"></span>
-                </lable>
+                </label>
                 
       
         <label>
