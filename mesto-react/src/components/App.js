@@ -13,7 +13,7 @@ function App() {
     const [isAddPlacePopupOpen, setisAddPlacePopupOpen] = useState(false);
     const [isEditAvatarPopupOpen, setisEditAvatarPopupOpen] = useState(false);
     const [isImagePopupOpen, setisImagePopupOpen] = useState(false);
-    const [selectedCard, setselectedCard] = useState([null]);
+    const [selectedCard, setselectedCard] = useState(null);
 
     function ESCClose(evt) {
         if (evt.key === 'Escape') {
