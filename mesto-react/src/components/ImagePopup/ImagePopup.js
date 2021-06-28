@@ -9,7 +9,7 @@ function ImagePopup(props) {
         <div className="popup__background popup-image__background"></div>
         <div className="popup-image__overlay">
             <img aria-label="Close" type="button" src={backBtn} className="popup__btn-back popup-image__btn-image" alt="Кнопка назад"  onClick={props.onClose}/>
-            <img src="#" className="popup-image__image" src={props.card && props.card.link} alt="картинка" />
+            <img  className="popup-image__image" src={props.card && props.card.link} alt="картинка" />
             <p className="popup-image__title">{props.card && props.card.name} </p>
         </div>
     </div>

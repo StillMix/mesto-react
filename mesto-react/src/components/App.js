@@ -25,7 +25,8 @@ function closeAllPopups(){
     setIsEditProfilePopupOpen(false);
     setisEditAvatarPopupOpen(false);
     setisAddPlacePopupOpen(false);
-    setselectedCard(false);
+    setisImagePopupOpen(false);
+    setselectedCard(null);
     document.removeEventListener('keyup', ESCClose);
 }
 
