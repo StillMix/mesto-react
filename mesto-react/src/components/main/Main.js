@@ -2,13 +2,13 @@ import React, {useState} from 'react';
 import avatarEdit from '../../images/avatar-edit.svg';
 import Card from '../Card/Card.js'
 import api from '../../utils/Api.js';
-import { userContext } from '../../contexts/CurrentUserContext.js';
+import { UserContext } from '../../contexts/CurrentUserContext.js';
 
 
 
 
 function Main(props) {
-  const currentUser = React.useContext(userContext);
+  const currentUser = React.useContext(UserContext);
   const [name, setName] = React.useState('');
   const [description, setDescription] = React.useState('');
   const [avatar, setAvatar] = React.useState('');

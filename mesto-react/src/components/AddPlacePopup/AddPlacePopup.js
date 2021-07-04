@@ -11,6 +11,8 @@ function AddPlacePopup(props) {
       name: name,
       link:link
     });
+    setName('');
+    setLink('');
   }
   function inputName(e) {
     setName(e.target.value);
@@ -22,13 +24,13 @@ function AddPlacePopup(props) {
     return (
       <PopupWithForm submite={handleSubmit} name="new-card" isOpen={props.isOpen} onClose={props.onClose}   namePopup="Новое место" btn="create-new-card" nameBtn="Создать">
       <label>
-      <input id="card-name-input" type="text" placeholder="Название" onChange={inputName} className="input input_type_nameImage" name="NameIMGInput" required minLength="2" maxLength="30" />
+      <input id="card-name-input" type="text" placeholder="Название" value={name} onChange={inputName} className="input input_type_nameImage" name="NameIMGInput" required minLength="2" maxLength="30" />
       <span className="popup__error card-name-input-error"></span>
   </label>
 
 
 <label>
-<input type="url" id="card-src-input" placeholder="Ссылка на картинку" onChange={inputLink} className="input input_type_src" name="SrcInput" required />
+<input type="url" id="card-src-input" placeholder="Ссылка на картинку" value={link} onChange={inputLink} className="input input_type_src" name="SrcInput" required />
 <span className="popup__error card-src-input-error"></span>
 </label>
 

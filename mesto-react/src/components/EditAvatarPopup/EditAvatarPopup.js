@@ -13,12 +13,13 @@ function EditAvatarPopup(props) {
     props.onUpdateAvatar({
       avatar: avatar,
     });
+    setAvatar('')
   }
 
     return (
 <PopupWithForm name="editAvatar" submite={handleSubmit} isOpen={props.isOpen} onClose={props.onClose}  namePopup="Обновить автар" btn="create-avatar" nameBtn="Сохранить">
                                           <label>
-                               <input type="url" id="profile-avatar-input" placeholder="Новый аватар" onChange={inputAvatar} className="input input_type_Avatar" name="avatarInput" required minLength="2" maxLength="200" />
+                               <input type="url" id="profile-avatar-input" value={avatar} placeholder="Новый аватар" onChange={inputAvatar} className="input input_type_Avatar" name="avatarInput" required minLength="2" maxLength="200" />
                                <span className="popup__error profile-avatar-input-error" ></span>
                            </label>
 
