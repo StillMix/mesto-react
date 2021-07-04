@@ -2,7 +2,7 @@ import React from 'react';
 import headerLogo from '../../images/header-logo.svg';
 
 function Header() {
-    return (   
+    return (
           <header className="header">
     <img src={headerLogo} alt="Логотип сайта" className="header__logo" />
     </header>

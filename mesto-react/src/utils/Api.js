@@ -64,24 +64,13 @@ class Api {
             return this._check(res)
         });
     }
-
-    setLike(id) {
-        return fetch(`${this._url}/cards/likes/${id}`, {
-            method: 'PUT',
-            headers: this._headers,
-        }).then((res) => {
-            return this._check(res)
-        });
-
-    }
-    removeLike(id) {
-        return fetch(`${this._url}/cards/likes/${id}`, {
-            method: 'DELETE',
-            headers: this._headers,
-        }).then((res) => {
-            return this._check(res)
-        });
-
+    changeLikeCardStatus(id, cardIsLiked){
+      return fetch(`${this._url}/cards/likes/${id}`, {
+        method: cardIsLiked ? "PUT" : "DELETE",
+        headers: this._headers,
+    }).then((res) => {
+        return this._check(res)
+    });
     }
 }
 

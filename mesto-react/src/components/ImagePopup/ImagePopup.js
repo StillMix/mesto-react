@@ -4,7 +4,7 @@ import backBtn from '../../images/back-button.svg';
 
 function ImagePopup(props) {
 
-    return (   
+    return (
         <div className={`popup popup-image ${props.isOpen ? 'popup__open' : ''}`}>
         <div className="popup__background popup-image__background"></div>
         <div className="popup-image__overlay">

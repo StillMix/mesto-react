@@ -1,23 +1,31 @@
-import React,{useState,useEffect} from 'react';
+import React from 'react';
+import { userContext } from '../../contexts/CurrentUserContext.js';
 
 function Card(props) {
+  const user = React.useContext(userContext);
+  function  handleLikeClick(){
+    props.onCardLike(props.card)
+  }
+  function  handleDeleteClick(){
+    props.onCardDelete(props.card)
+  }
     function handleClick() {
         props.onCardClick(props.card.name, props.card.link);
-      }  
-    return (   
+      }
+    return (
             <li className="element">
-                <button type="button" className="element__btn-open" onClick={handleClick}><img className="element__image" src={props.card.link} /></button>
-                <button className="element__basket" type="button"></button>
+                <button type="button" className="element__btn-open" onClick={handleClick}><img className="element__image" alt="картинка карточки" src={props.card.link} /></button>
+                <button className={`${props.card.owner._id === user._id ? 'element__basket' : 'element__basket-disactive'}`} type="button" onClick={handleDeleteClick}></button>
                 <div className="element__container">
                     <h3 className="element__name">{props.card.name}</h3>
-                    <button className="element__heart"></button>
+                    <button className="element__heart" onClick={handleLikeClick}></button>
                     <div className="element__likes">{props.card.likes.length}</div>
 
                 </div>
             </li>
-            
-            
-    
+
+
+
 
 
     );
