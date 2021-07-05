@@ -34,32 +34,22 @@ function closeAllPopups(){
 }
 function handleUpdateUser(newUser){
   api.setUserInfo(newUser).then((data) =>{
-    const userInfo ={
-      name:newUser.name,
-      about: newUser.about,
-      avatar: currentUser.avatar
-    }
-    setCurrentUser(userInfo)
+    setCurrentUser(data)
     closeAllPopups()
   })
   .catch((err) => {
       console.log(err)
-  },[]);
+  });
 }
 
 function handleUpdateAvatar(newAvatar){
   api.setUserAvatar(newAvatar).then((data) =>{
-    const userInfo ={
-      name: currentUser.name,
-      about: currentUser.about,
-      avatar: newAvatar.avatar
-    }
-    setCurrentUser(userInfo)
+    setCurrentUser(data)
     closeAllPopups()
   })
   .catch((err) => {
       console.log(err)
-  },[]);
+  });
 }
 
 React.useEffect(() => {
@@ -103,26 +93,28 @@ const [cards, setCards] = useState([])
 
 function handleCardLike(card) {
   const isLiked = card.likes.some(i => i._id === currentUser._id);
-  api.changeLikeCardStatus(card._id, !isLiked).then((newCard) => {
-      setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
-  });
-  getCards()
+  api.changeLikeCardStatus(card._id, !isLiked).then((data) => {
+      setCards((state) => state.map((c) => c._id === card._id ? data : c));
+  }).catch((err) => {
+    console.log(err)
+});
 }
 
 function handleDeleteCard(card) {
-api.deleteCard(card._id).then(() =>
+api.deleteCard(card._id).then((data) =>
 {
-  setCards((state) => state.filter( (st) => st.id !== card._id ))
-  getCards()
+  setCards((state) => state.filter((c) => c._id !== card._id ));
+
 }).catch((err) => {
   console.log(err)
 })
+
 }
 
 function addCard(newCard){
-  api.addCard(newCard).then(()=>{
+  api.addCard(newCard).then((data)=>{
+    setCards([data, ...cards]);
     closeAllPopups()
-    getCards()
   })
   .catch((err) => {
       console.log(err)
@@ -132,7 +124,7 @@ function addCard(newCard){
 
 React.useEffect(() =>{
   getCards()
-})
+},[])
 
 function handleCardClick(name, link){
     setisImagePopupOpen(true)
@@ -146,7 +138,7 @@ function handleCardClick(name, link){
     <div className="body">
     <div className="page">
         <Header />
-        <Main  onCardLike={handleCardLike} onCardDelete={handleDeleteCard} onEditAvatar={handleEditAvatarClick} onCardClick={handleCardClick} cards={cards}  onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick}/>
+        <Main   onCardLike={handleCardLike} onCardDelete={handleDeleteCard} onEditAvatar={handleEditAvatarClick} onCardClick={handleCardClick} cards={cards}  onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick}/>
         <Footer/>
 
         <ImagePopup card={selectedCard} isOpen={isImagePopupOpen} onClose={closeAllPopups}/>

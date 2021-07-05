@@ -1,7 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
 import avatarEdit from '../../images/avatar-edit.svg';
 import Card from '../Card/Card.js'
-import api from '../../utils/Api.js';
 import { UserContext } from '../../contexts/CurrentUserContext.js';
 
 
@@ -41,7 +40,7 @@ React.useEffect(() => {
                 <ul className="elements">
                 {props.cards.map((card) => {
             return(
-                <Card key={card._id} card={ {...card} } onCardClick={props.onCardClick} onCardDelete={props.onCardDelete} onCardLike={props.onCardLike} />
+                <Card key={card._id} card={ {...card} }  onCardClick={props.onCardClick} onCardDelete={props.onCardDelete} onCardLike={props.onCardLike} />
             )
         })}
                 </ul>
